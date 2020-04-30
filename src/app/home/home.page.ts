@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatosusuarioService } from '../datosusuario.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  listadatos;
+  constructor(public datos: DatosusuarioService) {}
 
-  constructor() {}
-
+  cargarInfo() {
+    this.datos.obtenerinformacionuser().subscribe(
+      (data) => {
+        this.listadatos = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }
