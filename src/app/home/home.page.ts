@@ -80,6 +80,7 @@ export class HomePage {
         icon: 'close',
         role: 'cancel'
       };
+      buttons.push(btnCancel);
     });
     return buttons;
   }
