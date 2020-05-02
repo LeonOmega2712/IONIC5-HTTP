@@ -65,9 +65,9 @@ export class HomePage {
   }
 
   createButtons() {
-    let buttons = [];
+    const buttons = [];
     this.listaalbums.forEach(album => {
-      let btn = {
+      const btn = {
         text: 'Álbum ' + album.id,
         icon: 'albums',
         handler: () => {
