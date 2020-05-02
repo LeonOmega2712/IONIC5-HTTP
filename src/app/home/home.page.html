@@ -12,8 +12,26 @@
   <ion-button (click)="cargarInfo()">INVOCAR SERVICIO</ion-button>
 
   <ion-list>
-    <button ion-item *ngFor="let usuario of listadatos">
+    <button (click)="cargaralbums(usuario.id)" ion-item *ngFor="let usuario of listadatos">
       {{usuario.id}} - {{usuario.name}}
     </button>
+  </ion-list>
+  <ion-list>
+    <button (click)="cargarfotos(album.id)" ion-item *ngFor="let album of listaalbums">
+      {{album.id}} - {{album.title}} - {{album.userId}}
+    </button>
+  </ion-list>
+  <!-- <ion-list>
+    <button ion-item *ngFor="let fotos of listafotos">
+      {{fotos.id}} - {{fotos.url}} - {{fotos.albumId}}
+    </button>
+  </ion-list> -->
+  <ion-list>
+    <ion-item *ngFor="let fotos of listafotos">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="fotos.url"></ion-img>
+      </ion-thumbnail>
+      <ion-label>{{fotos.title}}</ion-label>
+    </ion-item>
   </ion-list>
 </ion-content>
