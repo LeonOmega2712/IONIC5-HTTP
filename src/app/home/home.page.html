@@ -29,7 +29,7 @@
   <ion-list>
     <ion-item *ngFor="let fotos of listafotos">
       <ion-thumbnail slot="start">
-        <ion-img [src]="fotos.url"></ion-img>
+        <ion-img [src]="fotos.thumbnailUrl"></ion-img>
       </ion-thumbnail>
       <ion-label>{{fotos.title}}</ion-label>
     </ion-item>
