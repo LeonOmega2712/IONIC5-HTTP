@@ -33,4 +33,8 @@ export class PhotosPage implements OnInit {
       }
     );
   }
+
+  rutearFoto(fotoTitle) {
+    this.router.navigate(['/single-photo/' + fotoTitle]);
+  }
 }

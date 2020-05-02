@@ -20,4 +20,8 @@ export class DatosusuarioService {
   obtenerfotosalbum(id) {
     return this.http.get('https://jsonplaceholder.typicode.com/photos?albumId=' + id);
   }
+
+  obtenerfoto(title) {
+    return this.http.get('https://jsonplaceholder.typicode.com/photos?title=' + title);
+  }
 }

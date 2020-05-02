@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>single_photo</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Álbum"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Foto view:</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-card>
+    <ion-img [src]="fotoObjUrl"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>Título:</ion-card-subtitle>
+      <ion-card-title class="ion-text-wrap">{{fotoObjTitle}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Recursos proveídos por: <a>https://jsonplaceholder.typicode.com/</a>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

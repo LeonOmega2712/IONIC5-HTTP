@@ -16,9 +16,9 @@ const routes: Routes = [
     loadChildren: () => import('./photos/photos.module').then( m => m.PhotosPageModule)
   },
   {
-    path: 'single-photo/:photoId',
+    path: 'single-photo/:photoTitle',
     loadChildren: () => import('./single-photo/single-photo.module').then( m => m.SinglePhotoPageModule)
-  },
+  }
 ];
 
 @NgModule({

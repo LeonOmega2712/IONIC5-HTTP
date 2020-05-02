@@ -11,12 +11,11 @@ import { Router } from '@angular/router';
 export class HomePage {
   listadatos;
   listaalbums;
-  listafotos;
   listabtns;
   constructor(
     public datos: DatosusuarioService,
     public actionSheetController: ActionSheetController,
-    public Router: Router
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -46,8 +45,6 @@ export class HomePage {
     );
   }
 
-  
-
   async presentActionSheet(id) {
     const actionSheet = await this.actionSheetController.create({
       header: 'Álbums de ' + this.listadatos[id - 1].name,
@@ -64,7 +61,7 @@ export class HomePage {
         text: 'Álbum ' + album.id,
         icon: 'albums',
         handler: () => {
-          this.Router.navigate(['/photos/' + album.userId + '/' + album.title]);
+          this.router.navigate(['/photos/' + album.userId + '/' + album.title]);
         }
       };
       buttons.push(btn);
