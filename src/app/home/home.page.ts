@@ -1,6 +1,7 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { DatosusuarioService } from '../datosusuario.service';
 import { ActionSheetController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomePage {
   listabtns;
   constructor(
     public datos: DatosusuarioService,
-    public actionSheetController: ActionSheetController
+    public actionSheetController: ActionSheetController,
+    public Router: Router
   ) {}
 
   ngOnInit() {
@@ -44,16 +46,7 @@ export class HomePage {
     );
   }
 
-  cargarfotos(id) {
-    this.datos.obtenerfotosalbum(id).subscribe(
-      (data) => {
-        this.listafotos = data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  
 
   async presentActionSheet(id) {
     const actionSheet = await this.actionSheetController.create({
@@ -71,7 +64,7 @@ export class HomePage {
         text: 'Álbum ' + album.id,
         icon: 'albums',
         handler: () => {
-          console.log('Si jala el album ' + album.id);
+          this.Router.navigate(['/photos/' + album.userId + '/' + album.title]);
         }
       };
       buttons.push(btn);
@@ -84,5 +77,4 @@ export class HomePage {
     });
     return buttons;
   }
-
 }

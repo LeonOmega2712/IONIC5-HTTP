@@ -12,11 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'albums/:userId',
-    loadChildren: () => import('./albums/albums.module').then( m => m.AlbumsPageModule)
-  },
-  {
-    path: 'photos/:albumId',
+    path: 'photos/:albumId/:albumTitle',
     loadChildren: () => import('./photos/photos.module').then( m => m.PhotosPageModule)
   },
   {
