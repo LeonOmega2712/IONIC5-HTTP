@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { DatosusuarioService } from '../datosusuario.service';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,15 @@ export class HomePage {
   listadatos;
   listaalbums;
   listafotos;
-  constructor(public datos: DatosusuarioService) {}
+  listabtns;
+  constructor(
+    public datos: DatosusuarioService,
+    public actionSheetController: ActionSheetController
+  ) {}
+
+  ngOnInit() {
+    this.cargarInfo();
+  }
 
   cargarInfo() {
     this.datos.obtenerinformacionuser().subscribe(
@@ -27,6 +36,7 @@ export class HomePage {
     this.datos.obteneralbumsuser(id).subscribe(
       (data) => {
         this.listaalbums = data;
+        this.presentActionSheet(id);
       },
       (error) => {
         console.log(error);
@@ -43,5 +53,29 @@ export class HomePage {
         console.log(error);
       }
     );
+  }
+
+  async presentActionSheet(id) {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Álbums de ' + this.listadatos[id - 1].name,
+      buttons: [
+        {
+          text: 'Album 1',
+          icon: 'albums',
+          handler: () => {
+            console.log('Delete clicked');
+          },
+        },
+        {
+          text: 'Cancel',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          },
+        },
+      ],
+    });
+    await actionSheet.present();
   }
 }

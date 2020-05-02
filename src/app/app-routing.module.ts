@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'albums/:userId',
+    loadChildren: () => import('./albums/albums.module').then( m => m.AlbumsPageModule)
+  },
+  {
+    path: 'photos/:albumId',
+    loadChildren: () => import('./photos/photos.module').then( m => m.PhotosPageModule)
+  },
+  {
+    path: 'single-photo/:photoId',
+    loadChildren: () => import('./single-photo/single-photo.module').then( m => m.SinglePhotoPageModule)
+  },
 ];
 
 @NgModule({
