@@ -82,17 +82,6 @@
     </ion-card-content>
   </ion-card>
 
-  <!--LISTA DE ÁLBUMES DEL USUARIO-->
-  <ion-list>
-    <button
-      (click)="cargarfotos(album.id)"
-      ion-item
-      *ngFor="let album of listaalbums"
-    >
-      {{album.id}} - {{album.title}} - {{album.userId}}
-    </button>
-  </ion-list>
-
   <!--LISTA DE FOTOS DEL ALBUM DEL USUARIO-->
   <ion-row>
     <ion-col size="4" *ngFor="let fotos of listafotos">

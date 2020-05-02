@@ -58,24 +58,30 @@ export class HomePage {
   async presentActionSheet(id) {
     const actionSheet = await this.actionSheetController.create({
       header: 'Álbums de ' + this.listadatos[id - 1].name,
-      buttons: [
-        {
-          text: 'Album 1',
-          icon: 'albums',
-          handler: () => {
-            console.log('Delete clicked');
-          },
-        },
-        {
-          text: 'Cancel',
-          icon: 'close',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          },
-        },
-      ],
+      buttons:
+        this.createButtons(),
     });
     await actionSheet.present();
   }
+
+  createButtons() {
+    let buttons = [];
+    this.listaalbums.forEach(album => {
+      let btn = {
+        text: 'Álbum ' + album.id,
+        icon: 'albums',
+        handler: () => {
+          console.log('Si jala el album ' + album.id);
+        }
+      };
+      buttons.push(btn);
+      const btnCancel = {
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel'
+      };
+    });
+    return buttons;
+  }
+
 }
